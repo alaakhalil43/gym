@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.model.login;
+import org.example.repos.UserRepo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,29 +40,16 @@ public  class LoginScreen {
         jb.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                try {
-                    String username_j = j1.getText(); // to return the value from j1
-                    String password_j = j2.getText();
+                String pass=j2.getText();
+                String user=j1.getText();
 
-                    Connection con = connect.geConnection();
-                    PreparedStatement pr = con.prepareStatement("SELECT id FROM user WHERE username = ?");
-                    pr.setString(1, username_j);
-                    ResultSet rs = pr.executeQuery();
-                    if (rs.next()) {
-                         pr = con.prepareStatement("SELECT id FROM user WHERE password = ?");
-                        pr.setString(1, password_j);
-                        rs=pr.executeQuery();
-                        if (rs.next())    JOptionPane.showMessageDialog(null, AppMessages.loginSucess);
-                        else    JOptionPane.showMessageDialog(null, AppMessages.pass_uncorrect);
+                // باخد اوبجكت اخزن فيه الداتا اللي بحناجها
+                // والمفروض باخد الداتا دي واعمل عليها الكونكشن هناك
 
-                    } else {
-                        JOptionPane.showMessageDialog(null, AppMessages.username_uncorrect);
-                    }
+                login l=new login(user,pass);
+                UserRepo u=new UserRepo();
+                u.inservalues(l);
 
-                }
-                catch (SQLException ee) {
-                    throw new RuntimeException(ee);
-                }
 
             }
         });

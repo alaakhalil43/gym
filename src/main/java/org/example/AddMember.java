@@ -1,27 +1,19 @@
 package org.example;
-
 import org.example.model.MemberList;
 import org.example.repos.MemberListRepo;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class AddMember {
-
-
 
     public void Add_Member(){
         JFrame jf= new JFrame("Add Member");
         jf.getContentPane().setBackground(Color.gray);
         jf.setSize(400,500);
 
-        JTextField j1,j2,j3,j4,j5,j6,j7;
+        JTextField j2,j3,j4,j5,j6,j7;
 
 
 
@@ -60,7 +52,6 @@ public class AddMember {
         jf.add(j7);
 
 
-
         jf.add(jb);
         jf.setLayout(null);
         jf.setVisible(true);
@@ -79,8 +70,6 @@ public class AddMember {
                 MemberList m = new MemberList(0 , name ,Integer.parseInt(age)  , phone_num , address , Integer.parseInt(length) , Integer.parseInt(weight ));
 
                 MemberListRepo repo = new MemberListRepo();
-
-
                 repo.insertValues(m);
 
 

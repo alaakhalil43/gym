@@ -17,7 +17,7 @@ public class MemberListRepo {
         try {
             Connection co= connect.geConnection();
 
-            PreparedStatement p=co.prepareStatement("SELECT COALESCE(MAX(id) + 1, 0) AS id FROM member_list ");
+            PreparedStatement p=co.prepareStatement("SELECT COALESCE(MAX(id) + 1, 1) AS id FROM member_list ");
             ResultSet rs= p.executeQuery();
             while (rs.next()) {
 
@@ -34,7 +34,6 @@ public class MemberListRepo {
 
 
     public void insertValues (MemberList member){
-
 
         try {
             Connection c = connect.geConnection();
