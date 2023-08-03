@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class UserRepo {
 
 
-    public void inservalues(login l){
+    public void login_(login l){
 
         try {
             Connection con = connect.geConnection();

@@ -48,7 +48,7 @@ public  class LoginScreen {
 
                 login l=new login(user,pass);
                 UserRepo u=new UserRepo();
-                u.inservalues(l);
+                u.login_(l);
 
 
             }

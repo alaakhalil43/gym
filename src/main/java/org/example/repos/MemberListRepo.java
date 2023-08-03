@@ -7,10 +7,34 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberListRepo {
 
+    public List<MemberList> getDataFromSql() {
 
+        List<MemberList>  list = new ArrayList<>();
+
+
+        try {
+            Connection c = connect.geConnection();
+            PreparedStatement pr = c.prepareStatement("SELECT id, name, age, phone_num, address, length, weight FROM member_list");
+            ResultSet rs = pr.executeQuery();
+
+            while (rs.next()) {
+                MemberList m1 = new MemberList(rs.getInt(1), rs.getString(2), rs.getInt(3),
+                        rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+
+                list.add(m1);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return  list;
+    }
     public int getMaxId(){
 
         int id = 0;
