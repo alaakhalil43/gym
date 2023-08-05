@@ -1,21 +1,17 @@
 package org.example;
-
 import org.example.model.login;
 import org.example.repos.UserRepo;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 public  class LoginScreen {
-    static  void login(){
+    public   void login(){
         JFrame jf= new JFrame("ELol_Gym");
         jf.getContentPane().setBackground(Color.gray);
+        jf.setSize(tools.screenWidth,tools.screenHeight);
 
         JTextField j1,j2;
         j1=new JTextField("username");
@@ -29,7 +25,7 @@ public  class LoginScreen {
         JButton jb=new JButton("Login");
         jb.setBounds(100,190,100,20);
 
-        jf.setSize(400,400);
+
         jf.add(j1);
         jf.add(j2);
         jf.add(jb);
@@ -50,12 +46,8 @@ public  class LoginScreen {
                 UserRepo u=new UserRepo();
                 u.login_(l);
 
-
             }
         });
   }
-
-
-
 
 }

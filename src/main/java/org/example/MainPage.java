@@ -10,20 +10,11 @@ public class MainPage {
      public void MainPage(){
 
         JFrame jf= new JFrame("Main Page");
-        jf.setSize(800,800);
+        jf.setSize(tools.screenWidth,tools.screenHeight);
 
 
-        JPanel panel = new JPanel(new BorderLayout());
-        JLabel nameLabel = new JLabel("الاسم:");
-        JTextField nameField = new JTextField(20);
-
-
-        panel.add(nameLabel, BorderLayout.NORTH);
-        panel.add(nameField, BorderLayout.CENTER);
-
-
- JButton jb1=new JButton("اضافة عضو");
-         jb1.setBounds(120,100,250,250);
+    JButton jb1=new JButton("اضافة عضو");
+         jb1.setBounds(300,100,250,250);
          jb1.getFont();
         jb1.setFont(new Font("Arial", Font.PLAIN, 30));
 
@@ -53,8 +44,6 @@ public class MainPage {
         jf.add(jb2);
         jf.add(jb3);
         jf.add(jb4);
-        jf.add(nameField);
-        jf.add(nameLabel);
 
         jf.setLayout(null);
         jf.setVisible(true);

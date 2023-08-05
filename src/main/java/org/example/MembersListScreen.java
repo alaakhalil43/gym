@@ -1,20 +1,12 @@
 package org.example;
-
 import org.example.model.MemberList;
 import org.example.repos.MemberListRepo;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
 import java.util.List;
-import java.util.Vector;
 
 public class MembersListScreen {
-
-
 
   public void Member_List() {
 
@@ -22,7 +14,10 @@ public class MembersListScreen {
 
       JFrame frame = new JFrame("Swing Table Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
+        frame.setSize(tools.screenWidth, tools.screenHeight);
+
+        JButton button = new JButton("dfd");
+
 
         model = new DefaultTableModel(new String[]{"id", "Name", "Age", "phone_num", "address", "length", "weight"}, 0);
 
@@ -37,10 +32,15 @@ public class MembersListScreen {
           model.addRow(row);
       }
 
-        JTable table = new JTable(model);
-        JScrollPane scrollPane = new JScrollPane(table);
-        frame.add(scrollPane);
-        frame.setVisible(true);
+
+      JTable table = new JTable(model);
+
+      JScrollPane scrollPane = new JScrollPane(table);
+
+      frame.setLayout(new BorderLayout());
+      frame.add(scrollPane, BorderLayout.SOUTH); // وضع الجدول في منطقة BorderLayout.SOUTH
+
+      frame.setVisible(true);
     }
 
 

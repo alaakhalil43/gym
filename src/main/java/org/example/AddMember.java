@@ -9,13 +9,12 @@ import java.awt.event.ActionListener;
 public class AddMember {
 
     public void Add_Member(){
+
         JFrame jf= new JFrame("Add Member");
         jf.getContentPane().setBackground(Color.gray);
-        jf.setSize(400,500);
+        jf.setSize(tools.screenWidth,tools.screenHeight);
 
         JTextField j2,j3,j4,j5,j6,j7;
-
-
 
         j2=new JTextField("Name");
         j2.setBounds(40,70,200,30);
@@ -76,7 +75,12 @@ public class AddMember {
             }
 
 
+
+
         });
+
+
+
 
     }
 }
