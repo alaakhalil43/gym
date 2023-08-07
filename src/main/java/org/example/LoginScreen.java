@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 
 public  class LoginScreen {
     public   void login(){
+
+         // 2:42 8/8
+
         JFrame jf= new JFrame("ELol_Gym");
         jf.getContentPane().setBackground(Color.gray);
         jf.setSize(tools.screenWidth,tools.screenHeight);
