@@ -1,8 +1,11 @@
 package org.example.repos;
 
+import org.example.AppMessages;
 import org.example.connect;
 import org.example.model.MemberList;
+import org.example.model.Util;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,12 +28,12 @@ public class MemberListRepo {
             while (rs.next()) {
                 MemberList m1 = new MemberList(rs.getInt(1), rs.getString(2), rs.getInt(3),
                         rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
-
                 list.add(m1);
             }
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }
+        catch (SQLException e) {
+            System.out.println( "Error"+e.getMessage());
         }
 
         return  list;
@@ -74,16 +77,17 @@ public class MemberListRepo {
             ps.setInt(6, member.getLength());
             ps.setInt(7, member.getWeight());
 
-            // check all fileds
 
+            // check all fileds
             int rows_updat = ps.executeUpdate();    //all operation expect "select" use ps.excutequary()
-            System.out.println(rows_updat + " rows inserted");
+            if (rows_updat==1)  JOptionPane.showMessageDialog(null, "تم اضافة عضو جديد");
+           // System.out.println(rows_updat + " rows inserted");
             c.commit();
         }
 
 
         catch (SQLException ex) {
-            throw new RuntimeException(ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
 

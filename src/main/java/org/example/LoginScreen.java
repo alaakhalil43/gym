@@ -15,15 +15,18 @@ public  class LoginScreen {
 
         JTextField j1,j2;
         j1=new JTextField("username");
-        j1.setBounds(50,100,200,30);
+        j1.setBounds(550,200,200,40);
+        j1.setHorizontalAlignment(JTextField.CENTER);
 
 
         j2=new JTextField("password");
-        j2.setBounds(50,140,200,30);
+        j2.setBounds(550,250,200,40);
+        j2.setHorizontalAlignment(JTextField.CENTER);
 
 
         JButton jb=new JButton("Login");
-        jb.setBounds(100,190,100,20);
+        jb.setBounds(600,300,100,30);
+
 
 
         jf.add(j1);

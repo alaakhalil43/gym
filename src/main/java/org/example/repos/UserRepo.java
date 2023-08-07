@@ -28,8 +28,6 @@ public class UserRepo {
                 rs=pr.executeQuery();
 
 
-
-
                 if (rs.next())    JOptionPane.showMessageDialog(null, AppMessages.loginSucess);
                 else    JOptionPane.showMessageDialog(null, AppMessages.pass_uncorrect);
 

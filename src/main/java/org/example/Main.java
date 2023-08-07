@@ -1,5 +1,7 @@
 
 package org.example;
+
+
 import java.io.*;
 
 
@@ -10,16 +12,9 @@ public class Main {
 //        LoginScreen l=new LoginScreen();
 //        l.login();
 
+         MainPage mn=new MainPage();
+         mn.MainPage();
 
-//         MainPage mn=new MainPage();
-//         mn.MainPage();
-
-
-         MembersListScreen m1=new MembersListScreen();
-         m1.Member_List();
-
-//        AddMember a=new AddMember();
-//        a.Add_Member();
 
 
     }
