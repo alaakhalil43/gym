@@ -84,14 +84,16 @@ public class MembersListScreen {
                 boolean valid = valid(name, age, phone_num, address, length, weight);
                 if (valid)  {
                     boolean checkInteger= Check(age,phone_num,length,weight);
-                    if (checkInteger){
+                    if (checkInteger) {
+                        MemberListRepo mm=new MemberListRepo();
+                        if ( mm.CountNmuber(phone_num) ){
                         MemberList m = new MemberList(0, name, Integer.parseInt(age), phone_num, address, Integer.parseInt(length), Integer.parseInt(weight));
                         MemberListRepo repo = new MemberListRepo();
                         repo.insertValues(m);
 
                         jf.add(DrawTable(), BorderLayout.SOUTH); // وضع الجدول في منطقة BorderLayout.SOUTH
                         jf.setVisible(true);
-
+                    }
                     }
                 }
 
@@ -106,9 +108,7 @@ public class MembersListScreen {
     }
     public JScrollPane DrawTable(){
 
-
         DefaultTableModel model = new DefaultTableModel(new String[]{"id", "Name", "Age", "phone_num", "address", "length", "weight"}, 0);
-
         MemberListRepo ml = new MemberListRepo();
         List<MemberList> data = ml.getDataFromSql();
 
@@ -119,15 +119,12 @@ public class MembersListScreen {
             model.addRow(row);
         }
 
-
         JTable table = new JTable(model);
         JScrollPane scrollPane = new JScrollPane(table);
-
         return  scrollPane ;
     }
 
     public boolean valid(String name, String age, String phone_num, String address, String length, String weight) {
-
 
         if (name.isEmpty()) {
             JOptionPane.showMessageDialog(null, "يجب ادخال الاسم");

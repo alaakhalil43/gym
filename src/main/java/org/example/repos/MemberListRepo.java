@@ -1,5 +1,6 @@
 package org.example.repos;
 
+import com.mysql.cj.jdbc.CallableStatement;
 import org.example.AppMessages;
 import org.example.connect;
 import org.example.model.MemberList;
@@ -47,7 +48,6 @@ public class MemberListRepo {
             PreparedStatement p=co.prepareStatement("SELECT COALESCE(MAX(id) + 1, 1) AS id FROM member_list ");
             ResultSet rs= p.executeQuery();
             while (rs.next()) {
-
                id = rs.getInt(1);
             }
 
@@ -57,6 +57,29 @@ public class MemberListRepo {
             throw new RuntimeException(e);
         }
         return  id;
+    }
+    public Boolean CountNmuber(String num){
+        int n=0;
+        try {
+            Connection co=connect.geConnection();
+            PreparedStatement pr=co.prepareStatement(" select count(*) from member_list where phone_num = ?") ;
+            pr.setString(1,num);
+            ResultSet rs=pr.executeQuery();
+            while (rs.next()){
+                n=rs.getInt(1);
+            }
+            if (n==0) return true;
+            else  {
+                JOptionPane.showMessageDialog(null,"رقم الفون الذي ادخلته موجود مسبقا , ادخل رقم جديد");
+            return false;
+            }
+
+        }
+
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 
