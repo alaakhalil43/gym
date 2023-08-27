@@ -100,7 +100,6 @@ public class MembersListScreen {
             }
         });
 
-
         jf.setLayout(new BorderLayout());
         jf.add(DrawTable(), BorderLayout.SOUTH); // وضع الجدول في منطقة BorderLayout.SOUTH
 
@@ -112,7 +111,6 @@ public class MembersListScreen {
         MemberListRepo ml = new MemberListRepo();
         List<MemberList> data = ml.getDataFromSql();
 
-
         for (MemberList member : data) {
             Object[] row = {member.getId(), member.getName(), member.getAge(), member.getPhone_num(),
                     member.getAddress(), member.getLength(), member.getWeight()};
@@ -123,6 +121,8 @@ public class MembersListScreen {
         JScrollPane scrollPane = new JScrollPane(table);
         return  scrollPane ;
     }
+
+
 
     public boolean valid(String name, String age, String phone_num, String address, String length, String weight) {
 

@@ -1,11 +1,6 @@
 package org.example.repos;
-
-import com.mysql.cj.jdbc.CallableStatement;
-import org.example.AppMessages;
 import org.example.connect;
 import org.example.model.MemberList;
-import org.example.model.Util;
-
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,11 +11,8 @@ import java.util.List;
 
 public class MemberListRepo {
 
-    public List<MemberList> getDataFromSql() {
-
+        public List<MemberList> getDataFromSql() {
         List<MemberList>  list = new ArrayList<>();
-
-
         try {
             Connection c = connect.geConnection();
             PreparedStatement pr = c.prepareStatement("SELECT id, name, age, phone_num, address, length, weight FROM member_list");
@@ -58,6 +50,7 @@ public class MemberListRepo {
         }
         return  id;
     }
+
     public Boolean CountNmuber(String num){
         int n=0;
         try {
@@ -73,9 +66,7 @@ public class MemberListRepo {
                 JOptionPane.showMessageDialog(null,"رقم الفون الذي ادخلته موجود مسبقا , ادخل رقم جديد");
             return false;
             }
-
         }
-
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -100,15 +91,12 @@ public class MemberListRepo {
             ps.setInt(6, member.getLength());
             ps.setInt(7, member.getWeight());
 
-
             // check all fileds
             int rows_updat = ps.executeUpdate();    //all operation expect "select" use ps.excutequary()
             if (rows_updat==1)  JOptionPane.showMessageDialog(null, "تم اضافة عضو جديد");
            // System.out.println(rows_updat + " rows inserted");
             c.commit();
         }
-
-
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

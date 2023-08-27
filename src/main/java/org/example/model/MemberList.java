@@ -22,6 +22,11 @@ public class MemberList {
         this.weight = weight;
     }
 
+    public MemberList(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

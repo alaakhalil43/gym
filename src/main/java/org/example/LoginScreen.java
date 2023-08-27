@@ -47,7 +47,6 @@ public  class LoginScreen {
 
                 // باخد اوبجكت اخزن فيه الداتا اللي بحناجها
                 // والمفروض باخد الداتا دي واعمل عليها الكونكشن هناك
-
                 login l=new login(user,pass);
                 UserRepo u=new UserRepo();
                 u.login_(l);
