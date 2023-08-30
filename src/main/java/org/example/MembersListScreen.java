@@ -69,7 +69,6 @@ public class MembersListScreen {
 
         jf.add(jb);
 
-
         jb.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 

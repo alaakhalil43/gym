@@ -24,14 +24,36 @@ public class QueriesScreen {
         jf.setSize(tools.screenWidth, tools.screenHeight);
         jf.setLayout(null); // Use null layout for custom component placement
 
-
         jf.add(getMemberChoice());
         jf.add(getSubscribeChoice());
-        jf.add(jButton());
+
+        JButton jb = new JButton("Save");
+        jb.setFont(f);
+        jb.setHorizontalAlignment(JTextField.CENTER);
+        jb.setBounds(700, 200, 100, 40);
+        jf.add(jb);
+        jb.addActionListener(new ActionListener() {
+            GetSubscribeDetails g=new GetSubscribeDetails();
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CombBoxModel selected = (CombBoxModel) namesComboBox.getSelectedItem();
+                g.id1=selected.getId();
+                CombBoxModel selected2 = (CombBoxModel) namesComboBox2.getSelectedItem();
+                g.id2=selected2.getId();
+
+                SavaSubscribeRepo save=new SavaSubscribeRepo();
+                save.inservalues(g);
+                jf.setLayout(new BorderLayout());
+                jf.add(DrawTable(), BorderLayout.SOUTH); // وضع الجدول في منطقة BorderLayout.SOUTH
+                jf.setVisible(true);
+            }
+        });
         jf.setLayout(new BorderLayout());
         jf.add(DrawTable(), BorderLayout.SOUTH); // وضع الجدول في منطقة BorderLayout.SOUTH
         jf.setVisible(true);
     }
+
+
 
 
     public JPanel getMemberChoice() {
@@ -95,31 +117,16 @@ public class QueriesScreen {
         return contentPanel;
     }
 
-    public JButton jButton() {
-        JButton jb = new JButton("Save");
-        jb.setFont(f);
-        jb.setHorizontalAlignment(JTextField.CENTER);
-        jb.setBounds(700, 200, 100, 40);
-        jb.addActionListener(new ActionListener() {
-            GetSubscribeDetails g=new GetSubscribeDetails();
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CombBoxModel selected = (CombBoxModel) namesComboBox.getSelectedItem();
-                g.id1=selected.getId();
-                CombBoxModel selected2 = (CombBoxModel) namesComboBox2.getSelectedItem();
-                g.id2=selected2.getId();
+//    public JButton jButton() {
+//
+//
+//        return jb;
+//    }
 
-                SavaSubscribeRepo save=new SavaSubscribeRepo();
-                save.inservalues(g);
 
-            }
-        });
-
-        return jb;
-    }
 
     public JScrollPane DrawTable(){
-        DefaultTableModel model = new DefaultTableModel(new String[]{"id", "Name", "subscribe_type", "price", "date_start"}, 0);
+        DefaultTableModel model = new DefaultTableModel(new String[]{" Member_Id", "Name", "Subscribe_type", "Price", "Date_Start"}, 0);
         SavaSubscribeRepo m1 = new SavaSubscribeRepo();
         List<SubscribeList> data = m1.GetDataFromSql();
 
